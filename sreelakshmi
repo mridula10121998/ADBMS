@@ -1,0 +1,164 @@
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| information_schema          |
+| Themeparkdb                 |
+| bookdetails                 |
+| college_management_system   |
+| collegeinformationsystem001 |
+| harii                       |
+| inventory                   |
+| krishna                     |
+| mysql                       |
+| performance_schema          |
+| sample                      |
+| shahanas                    |
+| sherinx                     |
+| student                     |
+| swathy                      |
+| test                        |
+| vastian                     |
+| vismaya                     |
++-----------------------------+
+18 rows in set (0.06 sec)
+
+mysql> create database sreelakshmy;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| information_schema          |
+| Themeparkdb                 |
+| bookdetails                 |
+| college_management_system   |
+| collegeinformationsystem001 |
+| harii                       |
+| inventory                   |
+| krishna                     |
+| mysql                       |
+| performance_schema          |
+| sample                      |
+| shahanas                    |
+| sherinx                     |
+| sreelakshmy                 |
+| student                     |
+| swathy                      |
+| test                        |
+| vastian                     |
+| vismaya                     |
++-----------------------------+
+19 rows in set (0.00 sec)
+
+mysql> use sreelakshmy;
+Database changed
+mysql> create table student(id int(3),name varchar(20));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(3)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student add(mark int(3));
+Query OK, 0 rows affected (0.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(3)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table student modify(id varchar(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id varchar(20))' at line 1
+mysql> alter table student id varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id varchar(20)' at line 1
+mysql> alter table student modify id varchar(20);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student
+    -> desc student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc student' at line 2
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student drop mark;
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student rename to students;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> insert into students values('1','abhi');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from students;
++------+------+
+| id   | name |
++------+------+
+| 1    | abhi |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> inser into students values('2','anu','3','gopika','4','arun','5','sree');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inser into students values('2','anu','3','gopika','4','arun','5','sree')' at line 1
+mysql> insert into students values('2','anu'),('3','sree'),('4','arun');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++------+------+
+| id   | name |
++------+------+
+| 1    | abhi |
+| 2    | anu  |
+| 3    | sree |
+| 4    | arun |
++------+------+
+4 rows in set (0.00 sec)
+
+mysql> tee database;
+mysql> 

@@ -1,0 +1,157 @@
+mysql> show databases;
++-------------------------+
+| Database                |
++-------------------------+
+| information_schema      |
+| CollegeInfoSm001        |
+| Fasil_S3                |
+| Inventory               |
+| aaaa                    |
+| collegesystem           |
+| db_CollegeManagetSystem |
+| drisya                  |
+| mysql                   |
+| park                    |
+| performance_schema      |
+| rohit                   |
+| sal                     |
+| sample                  |
+| stibin_s3               |
+| test                    |
+| themepark               |
+| vinduja                 |
+| vini                    |
++-------------------------+
+19 rows in set (0.07 sec)
+
+mysql> create database mridula;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use mridula;
+Database changed
+mysql> create table student( id int(3),name 20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '20)' at line 1
+mysql> create table student( id int(3),name varchar(20));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(3)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student add mark int(3);
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(3)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> describe student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(3)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student modify id varchar(20);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student drop mark;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student to student1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to student1' at line 1
+mysql> alter table student rename to student1;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> describe student;
+ERROR 1146 (42S02): Table 'mridula.student' doesn't exist
+mysql> describe student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(20) | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student1;
+Empty set (0.00 sec)
+
+mysql> insert into student values('1',"abi");
+ERROR 1146 (42S02): Table 'mridula.student' doesn't exist
+mysql> insert into student values('1','abi');
+ERROR 1146 (42S02): Table 'mridula.student' doesn't exist
+mysql> insert into student1 values('1','abi');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student1;
++------+------+
+| id   | name |
++------+------+
+| 1    | abi  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into student1 values("2","anupama"
+    -> insert into student1 values("2","anupama"),(3,"raghi"),(4,"alen"),(5,"fitha");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into student1 values("2","anupama"),(3,"raghi"),(4,"alen"),(5,"fitha")' at line 2
+mysql> select * from student1;
++------+------+
+| id   | name |
++------+------+
+| 1    | abi  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into student1 values("2","anupama"),(3,"raghi"),(4,"alen"),(5,"fitha");
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from student1;
++------+---------+
+| id   | name    |
++------+---------+
+| 1    | abi     |
+| 2    | anupama |
+| 3    | raghi   |
+| 4    | alen    |
+| 5    | fitha   |
++------+---------+
+5 rows in set (0.00 sec)
+
